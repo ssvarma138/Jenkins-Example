@@ -3,19 +3,22 @@ pipeline{
   stages{
      stage('compile stage'){
        steps{
-               sh 'mvn clean compile'
+            def mvnHome = tool name: 'maven_3_6_3', type: 'maven'
+         sh "${mvnHome}/bin/mvn clean compile "
           }
      }
      stage('testing stage') {
            steps{
-                  sh 'mvn test'
+                  def mvnHome = tool name: 'maven_3_6_3', type: 'maven'
+              sh "${mvnHome}/bin/mvn test "
 
           }
      }
 
      stage('deploy stage') {
          steps{
-                sh 'mvn deploy'
+                def mvnHome = tool name: 'maven_3_6_3', type: 'maven'
+                 sh "${mvnHome}/bin/mvn deploy "
 
             }
           }

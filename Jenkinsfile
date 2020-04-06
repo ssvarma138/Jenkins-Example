@@ -1,25 +1,31 @@
 pipeline{
   agent any
+  
+  tools {
+    name: 'maven_3_6_3', type: 'maven'
+  }
   stages{
      stage('compile stage'){
        
-            def mvnHome = tool name: 'maven_3_6_3', type: 'maven'
-         sh "${mvnHome}/bin/mvn clean compile "
+       steps{
+         sh "mvn clean compile "
+       }
           
      }
      stage('testing stage') {
            
-                  def mvnHome = tool name: 'maven_3_6_3', type: 'maven'
-              sh "${mvnHome}/bin/mvn test "
+       steps{
+         sh "mvn test "
+       }
 
           
      }
 
      stage('deploy stage') {
+       steps{
+         sh "mvn deploy "
          
-                def mvnHome = tool name: 'maven_3_6_3', type: 'maven'
-                 sh "${mvnHome}/bin/mvn deploy "
-
+       }
             
           }
 

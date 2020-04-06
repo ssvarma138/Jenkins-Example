@@ -1,11 +1,8 @@
 node {
    def mvnHome
-   stage('Preparation') { // for display purposes
-      // Get some code from a GitHub repository
-      git 'https://github.com/ssvarma138/Jenkins-Example.git'
-      // Get the Maven tool.
-      // ** NOTE: This 'M3' Maven tool must be configured
-      // **       in the global configuration.           
+   stage('Preparation') { 
+      
+                
       mvnHome = tool 'maven_3_6_3'
    }
    stage('compile') {
